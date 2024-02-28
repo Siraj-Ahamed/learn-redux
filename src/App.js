@@ -1,26 +1,47 @@
 import { compose, pipe } from "lodash/fp";
 import "./App.css";
 
-let input = "  Subscribe  ";
-let output = "<div>" + input.trim() + "</div>";
-// console.log(output);
+const person = {
+    name: "Siraj",
+    address: {
+        city: "Mannar",
+        country: "Sri Lanka",
+    },
+};
 
-const trim = (str) => str.trim();
+const updated = { ...person, name: "Ahamed",
+address : {
+  ...person.address, country: 'Malaysia'
+} };
 
-// function trim(str) {
-//     str.trim();
-// }
-const wrapInDiv = (str) => `<div>${str}</div>`;
+// updated.address.country = "Dubai";
 
-const toLowerCase = (str) => str.toLowerCase();
-const result = wrapInDiv(toLowerCase(trim(input)));
-// console.log("=>", result);
+console.log("person", person);
+console.log("updated", updated);
 
-// const transform = compose(wrapInDiv, toLowerCase, trim)
-// transform(input)
 
-const transform = pipe(trim,toLowerCase, wrapInDiv);
-console.log(transform(input));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let input = "   Subcribe  ";
+
+// const trim = (str) => str.trim();
+// const toLowerCase = (str) => str.toLowerCase();
+// const wrapCustomize = (type) => (str) => `<${type}>${str}<${type}/>`;
+
+// const transform = pipe(trim, toLowerCase, wrapCustomize("span"));
+// console.log(transform(input));
 
 function App() {}
 
