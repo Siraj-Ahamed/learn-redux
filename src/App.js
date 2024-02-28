@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { compose, pipe } from "lodash/fp";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+let input = "  Subscribe  ";
+let output = "<div>" + input.trim() + "</div>";
+// console.log(output);
+
+const trim = (str) => str.trim();
+
+// function trim(str) {
+//     str.trim();
+// }
+const wrapInDiv = (str) => `<div>${str}</div>`;
+
+const toLowerCase = (str) => str.toLowerCase();
+const result = wrapInDiv(toLowerCase(trim(input)));
+// console.log("=>", result);
+
+// const transform = compose(wrapInDiv, toLowerCase, trim)
+// transform(input)
+
+const transform = pipe(trim,toLowerCase, wrapInDiv);
+console.log(transform(input));
+
+function App() {}
 
 export default App;
